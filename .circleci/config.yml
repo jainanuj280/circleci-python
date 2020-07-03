@@ -21,7 +21,16 @@ jobs:
             ~/project/venv/bin/nosetests tests
           name: Test
 
+  deploy:
+    steps:
+      - checkout
+      - run:
+          name: Deploy code to Dev environment
+          command: |
+            sudo ansible-playbook ansible/playbook.yml -i ansible/inventories/dev/hosts.ini  --extra-vars 'path=$env.WORKSPACE job=$JOB_NAME'
+            
 workflows:
   main:
     jobs:
       - build-and-test
+      - deploy
