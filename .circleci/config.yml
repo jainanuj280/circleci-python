@@ -17,6 +17,7 @@ jobs:
       - run:
           command: |
             . venv/bin/activate
+            pwd
             ~/venv/bin/nosetests test
           name: Test
 
