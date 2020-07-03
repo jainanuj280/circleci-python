@@ -1,5 +1,5 @@
 ---
-- hosts: uat
+- hosts: dev
   tasks:
     - name: kill existing python server
       ignore_errors: yes
