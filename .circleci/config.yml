@@ -18,7 +18,7 @@ jobs:
           command: |
             . venv/bin/activate
             pwd
-            ~/venv/bin/nosetests test
+            ~/project/venv/bin/nosetests test
           name: Test
 
 workflows:
