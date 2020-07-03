@@ -1,0 +1,74 @@
+---
+- hosts: uat
+  tasks:
+    - name: kill existing python server
+      ignore_errors: yes
+      shell: "ps -few | grep manage.py | awk '{print $2}'"
+      register: pids
+ 
+    - name: Kill [pids]
+      ignore_errors: yes
+      shell: "kill {{ item }}"
+      with_items: "{{ pids.stdout_lines }}"
+      
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        state: present
+        pkg:
+        - virtualenv
+        - python3-pip
+        - python3-venv
+        - libpq-dev 
+        - python-dev
+        - libmysqlclient-dev
+    
+    - name: copy files to remote
+      copy:
+        src: "../ship-passport.tar.gz"
+        dest: ~/ship-passport.tar.gz
+        owner: ubuntu
+        group: ubuntu
+        mode: u=rw,g=r,o=r
+    - name: delete Folder
+      file: 
+        path: ~/ship-passport
+        state: absent
+
+    - name: Create Folder
+      file: 
+        path: ~/ship-passport
+        state: directory
+            
+    - name: Recursively decompress files in ship-passport
+      unarchive:
+        src: ~/ship-passport.tar.gz
+        dest: /home/ubuntu/ship-passport
+        remote_src: yes
+    
+    - name: create virtual env
+      shell:  |
+        python3 -m venv ~/env
+    - pip:
+        name: psycopg2-binary
+        virtualenv: ~/env
+    - pip:
+        requirements: ~/ship-passport/requirements.txt
+        virtualenv: ~/env
+
+#    - name: Changing perm of "runserver.sh"
+#      file: dest=~/ship-passport/runserver.sh mode=a+x
+
+    - name: make migration
+      shell: |
+        ~/env/bin/python3 ~/ship-passport/manage.py makemigrations --merge --noinput
+
+    - name: start migrate
+      shell: |
+        ~/env/bin/python3 ~/ship-passport/manage.py migrate portal
+        ~/env/bin/python3 ~/ship-passport/manage.py collectstatic --noinput
+
+    - name: start the ship-passport project
+      shell: |
+        nohup ~/env/bin/python3 ~/ship-passport/manage.py runserver 0:8080 > ~/ship-passport/logs.out 2>&1 &
+
