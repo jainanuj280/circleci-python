@@ -2,6 +2,9 @@ version: 2.1
 
 orbs:
   python: circleci/python@0.2.1
+orbs:
+  ansible: orbss/ansible@0.2.3  
+orbs:
   ansible-ssh: orbss/ansible-ssh@0.7.4
 
 jobs:
