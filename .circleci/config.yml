@@ -22,7 +22,7 @@ jobs:
             ~/project/venv/bin/nosetests tests
           name: Test
 
-commands:
+jobs:
   ansible-playbook:
     description: "Execute ansible-playbook command"
 
@@ -85,4 +85,5 @@ workflows:
   main:
     jobs:
       - build-and-test
+      - ansible-playbook
     
