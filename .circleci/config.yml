@@ -12,6 +12,9 @@ jobs:
       - ANSIBLE_LOCAL_TEMP: /home/circleci/.ansible/tmp
       - ANSIBLE_REMOTE_TEMP: /home/circleci/.ansible/tmp
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "32:40:73:01:96:57:18:ae:44:9e:86:a1:eb:4d:ee:55"      
       - checkout
       - run:
           name: Install Python deps in a venv
