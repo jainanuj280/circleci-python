@@ -31,7 +31,7 @@ jobs:
           command: |
             . venv/bin/activate
             whoami
-            ansible-playbook -i ~/project/ansible/inventories/dev/hosts.ini ~/project/ansible/playbook.yml
+            ansible-playbook -i ~/project/ansible/inventories/dev/hosts.ini ~/project/ansible/inventories/playbook.yml
             
            
 workflows:
