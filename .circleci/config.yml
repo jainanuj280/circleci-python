@@ -32,9 +32,9 @@ jobs:
         docker:
           - image: tomonorimatsumura/centos7-ansible:yum
 
-    centos7-sshd:
-      docker:
-        - image: tomonorimatsumura/centos7-sshd:latest
+      centos7-sshd:
+        docker:
+          - image: tomonorimatsumura/centos7-sshd:latest
         
     steps:
       - run:
