@@ -29,7 +29,6 @@ jobs:
           name: Execute Ansible Playbook
           command: |
             . venv/bin/activate
-            cd $CIRCLE_WORKING_DIRECTORY
             whoami
             sudo ansible-playbook ansible/playbook.yml -i ansible/inventories/dev/hosts.ini
             
