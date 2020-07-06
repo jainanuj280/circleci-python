@@ -22,7 +22,7 @@ jobs:
             ~/project/venv/bin/nosetests tests
           name: Test
 
-jobs:
+
   ansible-playbook:
     description: "Execute ansible-playbook command"
 
@@ -70,12 +70,12 @@ jobs:
           command: |
             cd $CIRCLE_WORKING_DIRECTORY
             ansible-playbook -i host install.yml
-executors:
-  ubuntu14:
-    machine: true
-  centos7-ansible-yum:
-    docker:
-      - image: tomonorimatsumura/centos7-ansible:yum
+  executors:
+    ubuntu14:
+      machine: true
+    centos7-ansible-yum:
+      docker:
+        - image: tomonorimatsumura/centos7-ansible:yum
 
   centos7-sshd:
     docker:
