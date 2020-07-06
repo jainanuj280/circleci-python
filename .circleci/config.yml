@@ -24,7 +24,6 @@ jobs:
 
 
   ansible-playbook:
-    description: "Execute ansible-playbook command"
     executor:
       ubuntu14:
         machine: true
@@ -50,12 +49,14 @@ jobs:
             sudo python /tmp/get-pip.py 
             sudo pip install --upgrade pip && pip install --upgrade setuptools 
             sudo pip install ansible 
+            
       - run:
           name: Run Docker container
           command: |
             sudo docker run -d --name test-01 centos
             sudo docker ps
             sudo docker exec test-01 /bin/sh -c 'cat /etc/redhat-release'
+            
       - run:
           name: Create Ansible inventory file
           command: |
@@ -63,6 +64,7 @@ jobs:
             cd $CIRCLE_WORKING_DIRECTORY
             echo '[test_servers]' > host
             echo 'test-01' >> host
+            
       - run:
           name: Execute Docker command
           command: docker exec test-01 /bin/sh -c 'cat /etc/redhat-release'
@@ -75,6 +77,7 @@ jobs:
             export ANSIBLE_REMOTE_TMP="/tmp"
             ansible-playbook -i host -c docker -u docker install.yml
             sudo ansible-playbook ansible/playbook.yml -i ansible/inventories/dev/hosts.ini
+            
       - run:
           name: Execute Ansible Playbook again, checking to make sure it's idempotent.
           command: |
