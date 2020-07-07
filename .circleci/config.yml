@@ -27,9 +27,6 @@ jobs:
             pwd
             ~/project/venv/bin/nosetests tests
           name: Test
-
-  deploy:
-    steps:
       - run:
           name: Execute Ansible Playbook & Deploy
           command: |
