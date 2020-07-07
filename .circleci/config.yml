@@ -36,8 +36,6 @@ jobs:
             ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini
            
 workflows:
-  version: 2
-  build_test_and_deploy:
     jobs:
       - build_and_test
       - deploy:
