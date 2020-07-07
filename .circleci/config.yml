@@ -28,7 +28,7 @@ jobs:
             ~/project/venv/bin/nosetests tests
           name: Test
       - run:
-          name: Execute Ansible Playbook
+          name: Execute Ansible Playbook & Deploy
           command: |
             . venv/bin/activate
             whoami
