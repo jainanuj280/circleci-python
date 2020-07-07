@@ -33,7 +33,7 @@ jobs:
             . venv/bin/activate
             whoami
             chmod 400 ~/project/CFT.pem
-            ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini 
+            ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini -vvv
             
            
 workflows:
