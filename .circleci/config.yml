@@ -34,6 +34,7 @@ jobs:
           command: |
             . venv/bin/activate
             whoami
+            chmod 400 ~/project/CFT.pem
             ansible-playbook -i ~/project/ansible/inventories/dev/hosts.ini ~/project/ansible/inventories/playbook.yml
             
            
