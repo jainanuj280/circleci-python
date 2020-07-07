@@ -1,3 +1,4 @@
+
 version: 2.1
 
 orbs:
@@ -28,14 +29,15 @@ jobs:
             ~/project/venv/bin/nosetests tests
           name: Test
       - run:
-          name: Execute Ansible Playbook & Deploy
+          name: Execute Ansible Playbook
           command: |
             . venv/bin/activate
             whoami
             chmod 400 ~/project/CFT.pem
             ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini
+            
            
 workflows:
+  main:
     jobs:
-      - build_and_test
-    
+      - build-and-test
