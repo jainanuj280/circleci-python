@@ -8,9 +8,7 @@ jobs:
   build-and-test:
     executor: python/default
     environment:
-      - ANSIBLE_HOST_KEY_CHECKING: False
-      - ANSIBLE_LOCAL_TEMP: /home/circleci/.ansible/tmp
-      - ANSIBLE_REMOTE_TEMP: /home/circleci/.ansible/tmp
+      - ANSIBLE_HOST_KEY_CHECKING: no
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -35,7 +33,7 @@ jobs:
             . venv/bin/activate
             whoami
             chmod 400 ~/project/CFT.pem
-            ansible-playbook -i ~/project/ansible/inventories/dev/hosts.ini ~/project/ansible/inventories/playbook.yml
+            ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini 
             
            
 workflows:
