@@ -24,7 +24,7 @@
     
     - name: copy files to remote
       copy:
-        src: "~/ship-passport.tar.gz"
+        src: "~/project/ship-passport.tar.gz"
         dest: ~/ship-passport.tar.gz
         owner: ubuntu
         group: ubuntu
