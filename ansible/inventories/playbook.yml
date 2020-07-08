@@ -52,7 +52,7 @@
         name: psycopg2-binary
         virtualenv: ~/env
     - pip:
-        requirements: ~/ship-passport/requirements.txt
+        requirements: ~/ship-passport/home/circleci/project/requirements.txt
         virtualenv: ~/env
 
 #    - name: Changing perm of "runserver.sh"
@@ -60,14 +60,14 @@
 
     - name: make migration
       shell: |
-        ~/env/bin/python3 ~/ship-passport/manage.py makemigrations --merge --noinput
+        ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py makemigrations --merge --noinput
 
     - name: start migrate
       shell: |
-        ~/env/bin/python3 ~/ship-passport/manage.py migrate portal
-        ~/env/bin/python3 ~/ship-passport/manage.py collectstatic --noinput
+        ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py migrate portal
+        ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py collectstatic --noinput
 
     - name: start the ship-passport project
       shell: |
-        nohup ~/env/bin/python3 ~/ship-passport/manage.py runserver 0:8080 > ~/ship-passport/logs.out 2>&1 &
+        nohup ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py runserver 0:8080 > ~/ship-passport/logs.out 2>&1 &
 
