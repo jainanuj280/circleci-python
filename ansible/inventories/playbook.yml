@@ -57,6 +57,7 @@
 
 #    - name: Changing perm of "runserver.sh"
 #      file: dest=~/ship-passport/runserver.sh mode=a+x
+#       
 
     - name: start the ship-passport project
       shell: |
