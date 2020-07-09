@@ -58,15 +58,6 @@
 #    - name: Changing perm of "runserver.sh"
 #      file: dest=~/ship-passport/runserver.sh mode=a+x
 
-    - name: make migration
-      shell: |
-        ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py makemigrations --merge --noinput
-
-    - name: start migrate
-      shell: |
-        ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py migrate portal
-        ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py collectstatic --noinput
-
     - name: start the ship-passport project
       shell: |
         nohup ~/env/bin/python3 ~/ship-passport/home/circleci/project/manage.py runserver 0:8080 > ~/ship-passport/logs.out 2>&1 &
