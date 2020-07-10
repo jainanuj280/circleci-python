@@ -26,7 +26,7 @@ jobs:
           command: |
             . .venv/bin/activate
             pwd
-            ~/project/venv/bin/nosetests tests
+            ~/project/.venv/bin/nosetests tests
           name: Test
       - run:
           name: Execute Ansible Playbook
