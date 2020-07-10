@@ -34,7 +34,7 @@ jobs:
             . venv/bin/activate
             whoami
             chmod 400 ~/project/CFT.pem
-            tar --exclude='~/project/venv/*' -zcvf ship-passport.tar.gz ~/project/*
+            tar --exclude='~/project/venv/*' -zcvf ship-passport.tar.gz *
             ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini
             
            
