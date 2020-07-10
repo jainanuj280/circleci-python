@@ -18,23 +18,23 @@ jobs:
       - run:
           name: Install Python deps in a venv
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            python3 -m venv .venv
+            . .venv/bin/activate
             pip install ansible            
             pip install -r requirements.txt
       - run:
           command: |
-            . venv/bin/activate
+            . .venv/bin/activate
             pwd
             ~/project/venv/bin/nosetests tests
           name: Test
       - run:
           name: Execute Ansible Playbook
           command: |
-            . venv/bin/activate
+            . .venv/bin/activate
             whoami
             chmod 400 ~/project/CFT.pem
-            tar --exclude='~/project/venv/*' -zcvf ship-passport.tar.gz *
+            tar -zcvf ship-passport.tar.gz *
             ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini
             
            
