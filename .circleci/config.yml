@@ -28,7 +28,6 @@ jobs:
             . .venv/bin/activate
             pwd
             ~/project/.venv/bin/nosetests tests
-          name: Test
   deploy-stage:
     docker:
       - image: ubuntu:14.04
