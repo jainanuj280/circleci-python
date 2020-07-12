@@ -23,11 +23,16 @@ jobs:
             pip install ansible            
             pip install -r requirements.txt
       - run:
+          name: Test      
           command: |
             . .venv/bin/activate
             pwd
             ~/project/.venv/bin/nosetests tests
           name: Test
+  deploy-stage:
+    docker:
+      - image: ubuntu:14.04
+    steps:
       - run:
           name: Execute Ansible Playbook
           command: |
@@ -39,6 +44,10 @@ jobs:
             
            
 workflows:
+  version: 2.1
   main:
     jobs:
       - build-and-test
+      - deploy-stage
+          requires:
+            - build-and-test      
