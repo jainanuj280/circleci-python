@@ -47,6 +47,6 @@ workflows:
   main:
     jobs:
       - build-and-test
-      - deploy-stage    
+      - deploy-stage:    
           requires:
             - build-and-test
