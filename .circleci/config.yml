@@ -7,13 +7,7 @@ orbs:
 
 jobs:
   build-and-test:
-    executor: python/default
-    environment:
-      - ANSIBLE_HOST_KEY_CHECKING: no
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "32:40:73:01:96:57:18:ae:44:9e:86:a1:eb:4d:ee:55"      
       - checkout
       - run:
           name: Install Python deps in a venv
@@ -33,6 +27,10 @@ jobs:
     environment:
       - ANSIBLE_HOST_KEY_CHECKING: no    
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "32:40:73:01:96:57:18:ae:44:9e:86:a1:eb:4d:ee:55"
+      - checkout
       - run:
           name: Execute Ansible Playbook
           command: |
