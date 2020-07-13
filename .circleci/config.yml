@@ -29,8 +29,9 @@ jobs:
             pwd
             ~/project/.venv/bin/nosetests tests
   deploy-stage:
-    docker:
-      - image: ubuntu:18.04
+    executor: python/default
+    environment:
+      - ANSIBLE_HOST_KEY_CHECKING: no    
     steps:
       - run:
           name: Execute Ansible Playbook
