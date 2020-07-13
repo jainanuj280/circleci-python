@@ -35,6 +35,7 @@ jobs:
       - run:
           name: Execute Ansible Playbook
           command: |
+            sudo apt-get update
             apt-get install python3-venv
             python3 -m venv .venv
             . .venv/bin/activate
