@@ -35,7 +35,10 @@ jobs:
           local_port: '9001'
           target_host: 10.0.0.120
           target_port: '22'
-      - run: 'curl localhost:9001'
+      - run:
+          name: Keyscan mydomain.com (HACK)
+          command: ssh-keyscan -H bastion_host >> ~/.ssh/known_hosts
+          'curl localhost:9001'
 orbs:
   dmz: eddiewebb/dmz@volatile
 version: 2.1
