@@ -1,5 +1,7 @@
 jobs:
   build:
+    ssh_known_hosts: 
+      - 54.251.199.144
     docker:
       - image: 'circleci/node:10'
     steps:
