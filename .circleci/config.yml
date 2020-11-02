@@ -33,8 +33,7 @@ jobs:
           local_port: '22'
           target_host: 10.0.0.85
           target_port: '22'
-      - run: 
-          sudo ssh ubuntu@localhost -p 22 'whoami && hostname'
+      - run: 'curl localhost:22'
 orbs:
   dmz: eddiewebb/dmz@volatile
 version: 2.1
