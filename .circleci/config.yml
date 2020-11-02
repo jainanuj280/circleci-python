@@ -1,9 +1,7 @@
 jobs:
   build:
     docker:
-      - image: 'circleci/node:10'
-    environment:
-      - ANSIBLE_HOST_KEY_CHECKING: no       
+      - image: 'circleci/node:10'    
     steps:
       - checkout
       - dmz/open_tunnel:
@@ -35,6 +33,9 @@ jobs:
           local_port: '9001'
           target_host: 10.0.0.120
           target_port: '22'
+      - add_ssh_keys:
+          fingerprints:
+            - "19:69:38:3b:94:4b:a1:bf:57:0a:9b:af:00:1a:57:d7"
       - run:
           name: Keyscan mydomain.com (HACK)
           command: |
