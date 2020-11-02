@@ -5,7 +5,7 @@ jobs:
     steps:
       - checkout
       - dmz/open_tunnel:
-          bastion_host: 13.232.179.178
+          bastion_host: 15.207.106.156
           bastion_public_key: -----BEGIN RSA PRIVATE KEY-----
                                 MIIEogIBAAKCAQEAiTTTBukkweo3QdMCPpplaAtBdrXePvMkusxhAIbsFACGQyo5
                                 OZ2z21JZzFw5GBUNwIB0uSGHbrbBeA+SXZrI4k4ch9h+7I3ItMWceSS7fc0lHrWa
