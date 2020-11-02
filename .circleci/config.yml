@@ -5,37 +5,33 @@ jobs:
     steps:
       - checkout
       - dmz/open_tunnel:
-          bastion_host: 15.207.106.156
+          bastion_host: 54.251.199.144
           bastion_public_key: -----BEGIN RSA PRIVATE KEY-----
-                                MIIEogIBAAKCAQEAiTTTBukkweo3QdMCPpplaAtBdrXePvMkusxhAIbsFACGQyo5
-                                OZ2z21JZzFw5GBUNwIB0uSGHbrbBeA+SXZrI4k4ch9h+7I3ItMWceSS7fc0lHrWa
-                                f/kOirph4Ud1zDpTSGdrUSwy7A3IaVsCJqJkrbZ2ftprSRw1XXz9+8o1iM7HnV81
-                                ZIeNLHhdFaBIfNm/1Xnm4CMQTEf3Dd9K4Ue9AdseSy25aNk+sBaXCGWeJ88etljm
-                                EEzr7yNzrcnTgKDr5VzYKYnmDlqtJ0dhfo1ItPKqg4iSj1Zkb/daNIpWMmmlY2k1
-                                XUrwkshviP/0ebEVTzwg0V9VY4GayP+o1eKFnwIDAQABAoIBABRfXpIhHg8Y+tlw
-                                Pl4TSMlZGoBI4tYP/j0qSaDtZ7JUnZrtcw/GBcWkBaddbjDQN3mE2U//1X8v7awp
-                                C7+QUxGfLYdSMw5mww1sZh5qwNgeFMvphSZJUcpxgEUV+jy30FPo3ztvR6RbK43R
-                                MJGR/Ub518BgKBvz70yRWZkAXlCQwoHvh/gwJA7yWJ8OlIDYytEY+P9fFdP3read
-                                Gyeor4adnr+XQxKIiLBIRdeQXt9xI8UNphA2PPphJCh2iv7axxkDkkV+LpPZh8YN
-                                kO6yGqM6FJa5ZiujIMuJzxnN0ly8dUes0E5fRLgbKRscPkBWe5o0AR/ML2xxD/iT
-                                BDq8f1kCgYEA6P/k++aKR94z2xN57uQjc1Bxajq0yai0WOfyLQxY63KrfwAvovRX
-                                Nu1sYFIfohrSLHclxL7ERGj+49OdrcXcs6ea8ajk0iJmjpUw/e5xCQiOuf3bwFkz
-                                Tpy40iCAiqq7sBYKhGIbMsO9q8LFcbMUNBJ4OW8v6px5bUdeg0ME1BMCgYEAlsAm
-                                Ym8s2tYVYDf/DtGiVxkmogvzGSAT2EfItnmfhbuQMCnsavXzueu7cSVJQvRxU2wf
-                                SoUdf4vf7/bvQmT7rXKKEWidLwSMZe2TnSS/bS1OMBzrEWAQSkqc0+g87ss+C4Cd
-                                Yg2jrU3SaHrE2nhoNqPtkQwE+hyLoFlTkhKzwcUCgYALdWI2fSz5wdS9BmUtuWyA
-                                5Ejfl4mCjVhpMub3Di9lTNtgQIsXMXsEiYKV7hP+LeF+LFHgLh2K27sFS0fq3tsu
-                                vqRhFBREvUpb4rxpEIvgjNowDWr8N6bNS+nO86g+qYzXaQ4VWpnJ0lSGmOqK3+qz
-                                cOEWugAaQp26IRNl0yrunwKBgCbEp5ps6OYmZDzoaamP8+XeS/ckh5IQk8ntPArh
-                                YEruH3ijb29abSGFJCFG635SispfZfSuIxXoDOETahhzC95hNGyhsLqkus6DuJCT
-                                IL+dBRyOc012nPneElLUyMbIcd5XZyIOS+eHufKwj+t3R6W1pqTEqIsByE6maj2I
-                                nb3ZAoGAdj5fm64GK1Vbrpyx8Trggnf8d4Et2WUGO2jCR1S7xsa2WEj1r3WKVeJy
-                                gZlk4PbiBVe921ZiYKhHMNJctO/7j53h7/yRTXLomTQSGDBqQXTyiDOcb2IHGbec
-                                4/5dwO2BALF/qrlz2TN5rmK7o0gIfSno8LxkGcZBZvJF5xqSDrk=
-                                -----END RSA PRIVATE KEY-----
+                                  MIIEogIBAAKCAQEAr4c6vtoo2XjddkuVIDein4gheWyrdUPJ/6LjYBRZwV2rrmNqKlvqiB/jOJmt
+                                  68f4/VDfPodDtoi82Gf9MVxTpEuFs3OcwSADtJTHzMhHl+PMrseG0jgwayXMxQbXQOE1MtSwlsb9
+                                  kJueD3UhEh36XlpyLm/hqltokHYZI2br9VFNgbAKSvr91G23BcKCKJ1JwbmzGpuZivFCrr+i7tgH
+                                  oc9KxM4ayAsckxInC0Ah/6OvAzoSWm+lnuOyg2rhzdrnpQYJcFQvfu5meZ7dBlgomhWL4TvI0dsB
+                                  hjKrb0fTA2ILw/xarIwcLV4bANySkwt5TK4IF+VOLu1fJVk3KvT8oQIDAQABAoIBAD2DP5QYsg4c
+                                  bEgDjtw+gxAzTb/W1HOA8S5UMCjAmP/JytuPXWpA0f0oZ6GzQZ8KcnibudCY6KL0YnHYZ4O/3lQK
+                                  X22XC40mogXLygU6/tP88gMiS14qcNVr5sn5br/+7HzGyqfcToo57vdtzcwik1YzjiY18TiZVhii
+                                  OocMj45lfbUS82Q0yuTIIrBhAqWD5t45iM2Du3LEVxW2XTWI89HLQR4lEvM5Brh/dLi9GtYtTeA5
+                                  w5EHarlZxPpbmJ1Nr/juJLlvNgfrzuBSCKqVldRrEitIBFiisWlIe+1d8QYmXh0fP/5Gq4xnEtR4
+                                  DmfTW/0urx/+v+V3Lb9WF3CoMwECgYEA48wuvQkfhqcQZBD4ZIBH/JhPaCfCk66qFwo6RBnw2Lgo
+                                  RPRM0Y/SW7brFq5eDrTR9nfRuKE0Q/ZmroZR6Ir2sqGK7b/PO6jHomWMfzAEU/NMFI+QgaQ7dblp
+                                  DPN9rKH9avdjV5gvFq0mX3B6RTdKUeMVdXcUhP+Gajzi77Afl3ECgYEAxUJsClUVM/Ja442WjVx2
+                                  6i4adjUVwpvGp2Dps0cyXKkUkh8KZaxSuaRzsXLmNEsve+nJ1uZ232osn7bHjKEb263i3Ork1ws4
+                                  q1qsmY2J2lBY+ESjBc7sOMrzF7PeaOa7wb4acWxeP+KRHQABbhMSPwxK+qOag9/Q20P52qj5ADEC
+                                  gYBfEmCPVLdro14b5VlF2KQyr/60IaP7rvIeG46lzY3PZUypOqy06amJzZXgKXXn/V+D1g4ZWG5P
+                                  zw6b2ENnIlhDxVgOUfdTluV6yZcRniCwSOJ/0kslUD3grDlDxnu1CQaTFhzH+iPs+ucA/hiJusGx
+                                  22yhUcmmmF6pCDBOiNsmgQKBgGd+xxLQuzQrFxbHBdObTOTnVYjpp0YY1yygg11FoJ3PNHTKBnl7
+                                  5VdzeiQDJdcQD5TS/8xZ1Mq5eTo++wnEycoDvMCuGWzefVgiVeamxUoe199Cm8oDXBscGFk6TRn6
+                                  3U30gQk7k2OvavWtOBLZvLwJphlE12ATgRBZ5PCdsS8xAoGAYQ6joQUTNimsPPl1U/2KuhfS8qcf
+                                  yL2FOnJ8Dj+kifC0mli5/LvYUnZ6cywHcxMMANSGpFVH9IfpLwG4UcxaibnrbfrW4iUn3Uo7HzJJ
+                                  u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
+                                  -----END RSA PRIVATE KEY-----
           bastion_user: ubuntu
           local_port: '22'
-          target_host: 10.1.1.201
+          target_host: 10.0.0.120
           target_port: '22'
       - run: 'curl localhost:22'
 orbs:
