@@ -29,11 +29,11 @@ jobs:
                               yL2FOnJ8Dj+kifC0mli5/LvYUnZ6cywHcxMMANSGpFVH9IfpLwG4UcxaibnrbfrW4iUn3Uo7HzJJ
                               u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
                               -----END RSA PRIVATE KEY-----
-          bastion_user: root
+          bastion_user: ubuntu
           local_port: '22'
           target_host: 10.0.0.85
           target_port: '22'
-      - run: 'curl localhost:22'
+      - run: 'sudo curl localhost:22'
 orbs:
   dmz: eddiewebb/dmz@volatile
 version: 2.1
