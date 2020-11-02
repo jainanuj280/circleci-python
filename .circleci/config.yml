@@ -1,51 +1,39 @@
-
-version: 2.1
-
-orbs:
-  python: circleci/python@0.2.1
-
-
 jobs:
-  build-and-test:
-    executor: python/default  
+  build:
+    docker:
+      - image: 'circleci/node:10'
     steps:
       - checkout
-      - run:
-          name: Install Python deps in a venv
-          command: |
-            python3 -m venv .venv
-            . .venv/bin/activate            
-            pip install -r requirements.txt
-      - run:
-          name: Test      
-          command: |
-            . .venv/bin/activate
-            pwd
-            ~/project/.venv/bin/nosetests tests
-  deploy-stage:
-    executor: python/default
-    environment:
-      - ANSIBLE_HOST_KEY_CHECKING: no    
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "32:40:73:01:96:57:18:ae:44:9e:86:a1:eb:4d:ee:55"
-      - checkout
-      - run:
-          name: Execute Ansible Playbook
-          command: |
-            python3 -m venv .venv
-            . .venv/bin/activate
-            pip install ansible            
-            tar -zcvf ship-passport.tar.gz *
-            ansible-playbook ~/project/ansible/inventories/playbook.yml -i ~/project/ansible/inventories/dev/hosts.ini
-            
-           
-workflows:
-  version: 2.1
-  main:
-    jobs:
-      - build-and-test
-      - deploy-stage:    
-          requires:
-            - build-and-test
+      - dmz/open_tunnel:
+          bastion_host: 54.251.199.144
+          bastion_public_key: -----BEGIN RSA PRIVATE KEY-----
+                              MIIEogIBAAKCAQEAr4c6vtoo2XjddkuVIDein4gheWyrdUPJ/6LjYBRZwV2rrmNqKlvqiB/jOJmt
+                              68f4/VDfPodDtoi82Gf9MVxTpEuFs3OcwSADtJTHzMhHl+PMrseG0jgwayXMxQbXQOE1MtSwlsb9
+                              kJueD3UhEh36XlpyLm/hqltokHYZI2br9VFNgbAKSvr91G23BcKCKJ1JwbmzGpuZivFCrr+i7tgH
+                              oc9KxM4ayAsckxInC0Ah/6OvAzoSWm+lnuOyg2rhzdrnpQYJcFQvfu5meZ7dBlgomhWL4TvI0dsB
+                              hjKrb0fTA2ILw/xarIwcLV4bANySkwt5TK4IF+VOLu1fJVk3KvT8oQIDAQABAoIBAD2DP5QYsg4c
+                              bEgDjtw+gxAzTb/W1HOA8S5UMCjAmP/JytuPXWpA0f0oZ6GzQZ8KcnibudCY6KL0YnHYZ4O/3lQK
+                              X22XC40mogXLygU6/tP88gMiS14qcNVr5sn5br/+7HzGyqfcToo57vdtzcwik1YzjiY18TiZVhii
+                              OocMj45lfbUS82Q0yuTIIrBhAqWD5t45iM2Du3LEVxW2XTWI89HLQR4lEvM5Brh/dLi9GtYtTeA5
+                              w5EHarlZxPpbmJ1Nr/juJLlvNgfrzuBSCKqVldRrEitIBFiisWlIe+1d8QYmXh0fP/5Gq4xnEtR4
+                              DmfTW/0urx/+v+V3Lb9WF3CoMwECgYEA48wuvQkfhqcQZBD4ZIBH/JhPaCfCk66qFwo6RBnw2Lgo
+                              RPRM0Y/SW7brFq5eDrTR9nfRuKE0Q/ZmroZR6Ir2sqGK7b/PO6jHomWMfzAEU/NMFI+QgaQ7dblp
+                              DPN9rKH9avdjV5gvFq0mX3B6RTdKUeMVdXcUhP+Gajzi77Afl3ECgYEAxUJsClUVM/Ja442WjVx2
+                              6i4adjUVwpvGp2Dps0cyXKkUkh8KZaxSuaRzsXLmNEsve+nJ1uZ232osn7bHjKEb263i3Ork1ws4
+                              q1qsmY2J2lBY+ESjBc7sOMrzF7PeaOa7wb4acWxeP+KRHQABbhMSPwxK+qOag9/Q20P52qj5ADEC
+                              gYBfEmCPVLdro14b5VlF2KQyr/60IaP7rvIeG46lzY3PZUypOqy06amJzZXgKXXn/V+D1g4ZWG5P
+                              zw6b2ENnIlhDxVgOUfdTluV6yZcRniCwSOJ/0kslUD3grDlDxnu1CQaTFhzH+iPs+ucA/hiJusGx
+                              22yhUcmmmF6pCDBOiNsmgQKBgGd+xxLQuzQrFxbHBdObTOTnVYjpp0YY1yygg11FoJ3PNHTKBnl7
+                              5VdzeiQDJdcQD5TS/8xZ1Mq5eTo++wnEycoDvMCuGWzefVgiVeamxUoe199Cm8oDXBscGFk6TRn6
+                              3U30gQk7k2OvavWtOBLZvLwJphlE12ATgRBZ5PCdsS8xAoGAYQ6joQUTNimsPPl1U/2KuhfS8qcf
+                              yL2FOnJ8Dj+kifC0mli5/LvYUnZ6cywHcxMMANSGpFVH9IfpLwG4UcxaibnrbfrW4iUn3Uo7HzJJ
+                              u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
+                              -----END RSA PRIVATE KEY-----
+          bastion_user: ubuntu
+          local_port: '22'
+          target_host: 10.0.0.85
+          target_port: '80'
+      - run: 'curl localhost:22'
+orbs:
+  dmz: eddiewebb/dmz@volatile
+version: 2.1
