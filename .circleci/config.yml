@@ -34,7 +34,7 @@ jobs:
           target_host: 10.0.0.85
           target_port: '22'
       - run: 
-          sudo ssh ec2-user@localhost -p 9022 'whoami && hostname'
+          sudo ssh ubuntu@localhost -p 22 'whoami && hostname'
 orbs:
   dmz: eddiewebb/dmz@volatile
 version: 2.1
