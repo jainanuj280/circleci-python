@@ -53,43 +53,43 @@ commands:
         default: "22"
         description: The port of your target service on private network
         type: string
-    steps:
-    - add_ssh_keys
-    - when:
-        condition: <<parameters.bastion_public_key>>
-        steps:
-        - run:
-            command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
-              add private keys to SSH Permissions in Project Config (UI)\"\n  exit
-              1\nfi\n# the above step handled our private key, but we still need to
-              trust the *public* key of the bastion host by adding them to known_hosts
-              \nif [ -f \"<<parameters.bastion_public_key>>\" ];then\n  # parameter
-              is file, cat it\n  KEY_VALUE=`cat <<parameters.bastion_public_key>>`\nelse\n
-              \ #parameter is not file, assume variable or string, echo it\n  KEY_VALUE=`echo
-              \"<<parameters.bastion_public_key>>\"`\nfi\necho \"<<parameters.bastion_host>>
-              ${KEY_VALUE}\" >> ~/.ssh/known_hosts\n"
-            name: Trust provided Public Key for <<parameters.bastion_host>>
-    - unless:
-        condition: <<parameters.bastion_public_key>>
-        steps:
-        - run:
-            command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
-              add private keys to SSH Permissions in Project Config (UI)\"\n  exit
-              1\nfi\n# the above step handled our private key, but we still need to
-              trust the *public* key of the bastion host by adding them to known_hosts
-              \nssh-keyscan <<parameters.bastion_host>> >> ~/.ssh/known_hosts\n"
-            name: Trust Public Key for <<parameters.bastion_host>> using keyscan
-    - run:
-        command: |
-          sudo ssh -4 -L <<parameters.local_port>>:<<parameters.target_host>>:<<parameters.target_port>> -Nf <<parameters.bastion_user>>@<<parameters.bastion_host>>
-        name: Open Local Port Forwarding on <<parameters.local_port>> to <<parameters.target_host>>:<<parameters.target_port>>
-          via <<parameters.bastion_host>>
+
 
 jobs:
     build:
       docker:
         - image: 'circleci/node:10'
       steps:
+        - add_ssh_keys
+        - when:
+            condition: <<parameters.bastion_public_key>>
+            steps:
+            - run:
+                command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
+                  add private keys to SSH Permissions in Project Config (UI)\"\n  exit
+                  1\nfi\n# the above step handled our private key, but we still need to
+                  trust the *public* key of the bastion host by adding them to known_hosts
+                  \nif [ -f \"<<parameters.bastion_public_key>>\" ];then\n  # parameter
+                  is file, cat it\n  KEY_VALUE=`cat <<parameters.bastion_public_key>>`\nelse\n
+                  \ #parameter is not file, assume variable or string, echo it\n  KEY_VALUE=`echo
+                  \"<<parameters.bastion_public_key>>\"`\nfi\necho \"<<parameters.bastion_host>>
+                  ${KEY_VALUE}\" >> ~/.ssh/known_hosts\n"
+                name: Trust provided Public Key for <<parameters.bastion_host>>
+        - unless:
+            condition: <<parameters.bastion_public_key>>
+            steps:
+            - run:
+                command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
+                  add private keys to SSH Permissions in Project Config (UI)\"\n  exit
+                  1\nfi\n# the above step handled our private key, but we still need to
+                  trust the *public* key of the bastion host by adding them to known_hosts
+                  \nssh-keyscan <<parameters.bastion_host>> >> ~/.ssh/known_hosts\n"
+                name: Trust Public Key for <<parameters.bastion_host>> using keyscan
+        - run:
+            command: |
+              sudo ssh -4 -L <<parameters.local_port>>:<<parameters.target_host>>:<<parameters.target_port>> -Nf <<parameters.bastion_user>>@<<parameters.bastion_host>>
+            name: Open Local Port Forwarding on <<parameters.local_port>> to <<parameters.target_host>>:<<parameters.target_port>>
+              via <<parameters.bastion_host>>      
         - checkout
         - dmz/open_tunnel:
             bastion_host: 54.251.199.144
