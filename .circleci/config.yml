@@ -90,7 +90,7 @@ examples:
       jobs:
         build:
           docker:
-            - image: circleci/node:10
+            - image: 'circleci/node:10'
           steps:
             - checkout
             - dmz/open_tunnel:
@@ -119,10 +119,10 @@ examples:
                                   u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
                                   -----END RSA PRIVATE KEY-----
                 bastion_user: ubuntu
-                local_port: "9001"
-                target_host: 10.0.0.120
-                target_port: "22"
-            - run: curl localhost:9001
+                local_port: '9001'
+                target_host: 10.0.0.85
+                target_port: '22'
+            - run: curl localhost:9001	  
       orbs:
         dmz: eddiewebb/dmz@volatile
       version: 2.1
