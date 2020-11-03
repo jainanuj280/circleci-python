@@ -119,8 +119,8 @@ jobs:
           target_host: 10.0.0.85
           target_port: "22"
       - run: |
-          ssh-keyscan -p 9022 localhost >> ~/.ssh/known_hosts  #not required if you also trust the both server's keys explicitly
-	  ssh ec2-user@localhost -p 9022 'whoami && hostname'
+          ssh-keyscan -p 9001 localhost >> ~/.ssh/known_hosts  #not required if you also trust the both server's keys explicitly
+          ssh ec2-user@localhost -p 9001 'whoami && hostname'
 orbs:
     dmz: eddiewebb/dmz@volatile
     
