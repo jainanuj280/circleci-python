@@ -1,37 +1,35 @@
 version: 2.1
-orbs:
-    dmz: eddiewebb/dmz@volatile
 commands:
   open_tunnel:
     parameters:
       bastion_host:
-        default: 54.251.199.144
         description: The hostname or IP of your jump host in exposed DMZ
         type: string
+        default: 54.251.199.144
       bastion_public_key:
         default: "-----BEGIN RSA PRIVATE KEY-----
-                    MIIEogIBAAKCAQEAr4c6vtoo2XjddkuVIDein4gheWyrdUPJ/6LjYBRZwV2rrmNqKlvqiB/jOJmt
-                    68f4/VDfPodDtoi82Gf9MVxTpEuFs3OcwSADtJTHzMhHl+PMrseG0jgwayXMxQbXQOE1MtSwlsb9
-                    kJueD3UhEh36XlpyLm/hqltokHYZI2br9VFNgbAKSvr91G23BcKCKJ1JwbmzGpuZivFCrr+i7tgH
-                    oc9KxM4ayAsckxInC0Ah/6OvAzoSWm+lnuOyg2rhzdrnpQYJcFQvfu5meZ7dBlgomhWL4TvI0dsB
-                    hjKrb0fTA2ILw/xarIwcLV4bANySkwt5TK4IF+VOLu1fJVk3KvT8oQIDAQABAoIBAD2DP5QYsg4c
-                    bEgDjtw+gxAzTb/W1HOA8S5UMCjAmP/JytuPXWpA0f0oZ6GzQZ8KcnibudCY6KL0YnHYZ4O/3lQK
-                    X22XC40mogXLygU6/tP88gMiS14qcNVr5sn5br/+7HzGyqfcToo57vdtzcwik1YzjiY18TiZVhii
-                    OocMj45lfbUS82Q0yuTIIrBhAqWD5t45iM2Du3LEVxW2XTWI89HLQR4lEvM5Brh/dLi9GtYtTeA5
-                    w5EHarlZxPpbmJ1Nr/juJLlvNgfrzuBSCKqVldRrEitIBFiisWlIe+1d8QYmXh0fP/5Gq4xnEtR4
-                    DmfTW/0urx/+v+V3Lb9WF3CoMwECgYEA48wuvQkfhqcQZBD4ZIBH/JhPaCfCk66qFwo6RBnw2Lgo
-                    RPRM0Y/SW7brFq5eDrTR9nfRuKE0Q/ZmroZR6Ir2sqGK7b/PO6jHomWMfzAEU/NMFI+QgaQ7dblp
-                    DPN9rKH9avdjV5gvFq0mX3B6RTdKUeMVdXcUhP+Gajzi77Afl3ECgYEAxUJsClUVM/Ja442WjVx2
-                    6i4adjUVwpvGp2Dps0cyXKkUkh8KZaxSuaRzsXLmNEsve+nJ1uZ232osn7bHjKEb263i3Ork1ws4
-                    q1qsmY2J2lBY+ESjBc7sOMrzF7PeaOa7wb4acWxeP+KRHQABbhMSPwxK+qOag9/Q20P52qj5ADEC
-                    gYBfEmCPVLdro14b5VlF2KQyr/60IaP7rvIeG46lzY3PZUypOqy06amJzZXgKXXn/V+D1g4ZWG5P
-                    zw6b2ENnIlhDxVgOUfdTluV6yZcRniCwSOJ/0kslUD3grDlDxnu1CQaTFhzH+iPs+ucA/hiJusGx
-                    22yhUcmmmF6pCDBOiNsmgQKBgGd+xxLQuzQrFxbHBdObTOTnVYjpp0YY1yygg11FoJ3PNHTKBnl7
-                    5VdzeiQDJdcQD5TS/8xZ1Mq5eTo++wnEycoDvMCuGWzefVgiVeamxUoe199Cm8oDXBscGFk6TRn6
-                    3U30gQk7k2OvavWtOBLZvLwJphlE12ATgRBZ5PCdsS8xAoGAYQ6joQUTNimsPPl1U/2KuhfS8qcf
-                    yL2FOnJ8Dj+kifC0mli5/LvYUnZ6cywHcxMMANSGpFVH9IfpLwG4UcxaibnrbfrW4iUn3Uo7HzJJ
-                    u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
-                    -----END RSA PRIVATE KEY-----"
+                                  MIIEogIBAAKCAQEAr4c6vtoo2XjddkuVIDein4gheWyrdUPJ/6LjYBRZwV2rrmNqKlvqiB/jOJmt
+                                  68f4/VDfPodDtoi82Gf9MVxTpEuFs3OcwSADtJTHzMhHl+PMrseG0jgwayXMxQbXQOE1MtSwlsb9
+                                  kJueD3UhEh36XlpyLm/hqltokHYZI2br9VFNgbAKSvr91G23BcKCKJ1JwbmzGpuZivFCrr+i7tgH
+                                  oc9KxM4ayAsckxInC0Ah/6OvAzoSWm+lnuOyg2rhzdrnpQYJcFQvfu5meZ7dBlgomhWL4TvI0dsB
+                                  hjKrb0fTA2ILw/xarIwcLV4bANySkwt5TK4IF+VOLu1fJVk3KvT8oQIDAQABAoIBAD2DP5QYsg4c
+                                  bEgDjtw+gxAzTb/W1HOA8S5UMCjAmP/JytuPXWpA0f0oZ6GzQZ8KcnibudCY6KL0YnHYZ4O/3lQK
+                                  X22XC40mogXLygU6/tP88gMiS14qcNVr5sn5br/+7HzGyqfcToo57vdtzcwik1YzjiY18TiZVhii
+                                  OocMj45lfbUS82Q0yuTIIrBhAqWD5t45iM2Du3LEVxW2XTWI89HLQR4lEvM5Brh/dLi9GtYtTeA5
+                                  w5EHarlZxPpbmJ1Nr/juJLlvNgfrzuBSCKqVldRrEitIBFiisWlIe+1d8QYmXh0fP/5Gq4xnEtR4
+                                  DmfTW/0urx/+v+V3Lb9WF3CoMwECgYEA48wuvQkfhqcQZBD4ZIBH/JhPaCfCk66qFwo6RBnw2Lgo
+                                  RPRM0Y/SW7brFq5eDrTR9nfRuKE0Q/ZmroZR6Ir2sqGK7b/PO6jHomWMfzAEU/NMFI+QgaQ7dblp
+                                  DPN9rKH9avdjV5gvFq0mX3B6RTdKUeMVdXcUhP+Gajzi77Afl3ECgYEAxUJsClUVM/Ja442WjVx2
+                                  6i4adjUVwpvGp2Dps0cyXKkUkh8KZaxSuaRzsXLmNEsve+nJ1uZ232osn7bHjKEb263i3Ork1ws4
+                                  q1qsmY2J2lBY+ESjBc7sOMrzF7PeaOa7wb4acWxeP+KRHQABbhMSPwxK+qOag9/Q20P52qj5ADEC
+                                  gYBfEmCPVLdro14b5VlF2KQyr/60IaP7rvIeG46lzY3PZUypOqy06amJzZXgKXXn/V+D1g4ZWG5P
+                                  zw6b2ENnIlhDxVgOUfdTluV6yZcRniCwSOJ/0kslUD3grDlDxnu1CQaTFhzH+iPs+ucA/hiJusGx
+                                  22yhUcmmmF6pCDBOiNsmgQKBgGd+xxLQuzQrFxbHBdObTOTnVYjpp0YY1yygg11FoJ3PNHTKBnl7
+                                  5VdzeiQDJdcQD5TS/8xZ1Mq5eTo++wnEycoDvMCuGWzefVgiVeamxUoe199Cm8oDXBscGFk6TRn6
+                                  3U30gQk7k2OvavWtOBLZvLwJphlE12ATgRBZ5PCdsS8xAoGAYQ6joQUTNimsPPl1U/2KuhfS8qcf
+                                  yL2FOnJ8Dj+kifC0mli5/LvYUnZ6cywHcxMMANSGpFVH9IfpLwG4UcxaibnrbfrW4iUn3Uo7HzJJ
+                                  u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
+                                  -----END RSA PRIVATE KEY-----"
         description: 'The public key of the bastion host to ensure mutual trust.  Argument
           may be a value, ENV VAR name, or file path. If left empty `ssh keyscan <bastion_host>`
           will trust it dynamically. '
@@ -40,84 +38,91 @@ commands:
         description: The username on your jump host in exposed DMZ that matches SSH
           keys provided
         type: string
-        default: ubuntu
       local_port:
         default: "9001"
         description: The port to expose locally, most likely matches your target port
         type: string
       target_host:
-        default: 10.0.0.120
         description: The hostname or IP of your target service on private network
         type: string
+        default: 10.0.0.85
       target_port:
         default: "22"
         description: The port of your target service on private network
         type: string
-
+    steps:
+    - add_ssh_keys
+    - when:
+        condition: <<parameters.bastion_public_key>>
+        steps:
+        - run:
+            command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
+              add private keys to SSH Permissions in Project Config (UI)\"\n  exit
+              1\nfi\n# the above step handled our private key, but we still need to
+              trust the *public* key of the bastion host by adding them to known_hosts
+              \nif [ -f \"<<parameters.bastion_public_key>>\" ];then\n  # parameter
+              is file, cat it\n  KEY_VALUE=`cat <<parameters.bastion_public_key>>`\nelse\n
+              \ #parameter is not file, assume variable or string, echo it\n  KEY_VALUE=`echo
+              \"<<parameters.bastion_public_key>>\"`\nfi\necho \"<<parameters.bastion_host>>
+              ${KEY_VALUE}\" >> ~/.ssh/known_hosts\n"
+            name: Trust provided Public Key for <<parameters.bastion_host>>
+    - unless:
+        condition: <<parameters.bastion_public_key>>
+        steps:
+        - run:
+            command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
+              add private keys to SSH Permissions in Project Config (UI)\"\n  exit
+              1\nfi\n# the above step handled our private key, but we still need to
+              trust the *public* key of the bastion host by adding them to known_hosts
+              \nssh-keyscan <<parameters.bastion_host>> >> ~/.ssh/known_hosts\n"
+            name: Trust Public Key for <<parameters.bastion_host>> using keyscan
+    - run:
+        command: |
+          ssh -4 -L <<parameters.local_port>>:<<parameters.target_host>>:<<parameters.target_port>> -Nf <<parameters.bastion_user>>@<<parameters.bastion_host>>
+        name: Open Local Port Forwarding on <<parameters.local_port>> to <<parameters.target_host>>:<<parameters.target_port>>
+          via <<parameters.bastion_host>>
 
 jobs:
     build:
       docker:
-        - image: 'circleci/node:10'
+      - image: circleci/node:10
       steps:
-        - add_ssh_keys
-        - when:
-            condition: <<parameters.bastion_public_key>>
-            steps:
-            - run:
-                command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
-                  add private keys to SSH Permissions in Project Config (UI)\"\n  exit
-                  1\nfi\n# the above step handled our private key, but we still need to
-                  trust the *public* key of the bastion host by adding them to known_hosts
-                  \nif [ -f \"<<parameters.bastion_public_key>>\" ];then\n  # parameter
-                  is file, cat it\n  KEY_VALUE=`cat <<parameters.bastion_public_key>>`\nelse\n
-                  \ #parameter is not file, assume variable or string, echo it\n  KEY_VALUE=`echo
-                  \"<<parameters.bastion_public_key>>\"`\nfi\necho \"<<parameters.bastion_host>>
-                  ${KEY_VALUE}\" >> ~/.ssh/known_hosts\n"
-                name: Trust provided Public Key for <<parameters.bastion_host>>
-        - unless:
-            condition: <<parameters.bastion_public_key>>
-            steps:
-            - run:
-                command: "if [ ! -d ~/.ssh ];then\n  echo \"No .ssh folder exists, please
-                  add private keys to SSH Permissions in Project Config (UI)\"\n  exit
-                  1\nfi\n# the above step handled our private key, but we still need to
-                  trust the *public* key of the bastion host by adding them to known_hosts
-                  \nssh-keyscan <<parameters.bastion_host>> >> ~/.ssh/known_hosts\n"
-                name: Trust Public Key for <<parameters.bastion_host>> using keyscan
-        - run:
-            command: |
-              sudo ssh -4 -L <<parameters.local_port>>:<<parameters.target_host>>:<<parameters.target_port>> -Nf <<parameters.bastion_user>>@<<parameters.bastion_host>>
-            name: Open Local Port Forwarding on <<parameters.local_port>> to <<parameters.target_host>>:<<parameters.target_port>>
-              via <<parameters.bastion_host>>      
-        - checkout
-        - dmz/open_tunnel:
-            bastion_host: 54.251.199.144
-            bastion_public_key: -----BEGIN RSA PRIVATE KEY-----
-                              MIIEogIBAAKCAQEAr4c6vtoo2XjddkuVIDein4gheWyrdUPJ/6LjYBRZwV2rrmNqKlvqiB/jOJmt
-                              68f4/VDfPodDtoi82Gf9MVxTpEuFs3OcwSADtJTHzMhHl+PMrseG0jgwayXMxQbXQOE1MtSwlsb9
-                              kJueD3UhEh36XlpyLm/hqltokHYZI2br9VFNgbAKSvr91G23BcKCKJ1JwbmzGpuZivFCrr+i7tgH
-                              oc9KxM4ayAsckxInC0Ah/6OvAzoSWm+lnuOyg2rhzdrnpQYJcFQvfu5meZ7dBlgomhWL4TvI0dsB
-                              hjKrb0fTA2ILw/xarIwcLV4bANySkwt5TK4IF+VOLu1fJVk3KvT8oQIDAQABAoIBAD2DP5QYsg4c
-                              bEgDjtw+gxAzTb/W1HOA8S5UMCjAmP/JytuPXWpA0f0oZ6GzQZ8KcnibudCY6KL0YnHYZ4O/3lQK
-                              X22XC40mogXLygU6/tP88gMiS14qcNVr5sn5br/+7HzGyqfcToo57vdtzcwik1YzjiY18TiZVhii
-                              OocMj45lfbUS82Q0yuTIIrBhAqWD5t45iM2Du3LEVxW2XTWI89HLQR4lEvM5Brh/dLi9GtYtTeA5
-                              w5EHarlZxPpbmJ1Nr/juJLlvNgfrzuBSCKqVldRrEitIBFiisWlIe+1d8QYmXh0fP/5Gq4xnEtR4
-                              DmfTW/0urx/+v+V3Lb9WF3CoMwECgYEA48wuvQkfhqcQZBD4ZIBH/JhPaCfCk66qFwo6RBnw2Lgo
-                              RPRM0Y/SW7brFq5eDrTR9nfRuKE0Q/ZmroZR6Ir2sqGK7b/PO6jHomWMfzAEU/NMFI+QgaQ7dblp
-                              DPN9rKH9avdjV5gvFq0mX3B6RTdKUeMVdXcUhP+Gajzi77Afl3ECgYEAxUJsClUVM/Ja442WjVx2
-                              6i4adjUVwpvGp2Dps0cyXKkUkh8KZaxSuaRzsXLmNEsve+nJ1uZ232osn7bHjKEb263i3Ork1ws4
-                              q1qsmY2J2lBY+ESjBc7sOMrzF7PeaOa7wb4acWxeP+KRHQABbhMSPwxK+qOag9/Q20P52qj5ADEC
-                              gYBfEmCPVLdro14b5VlF2KQyr/60IaP7rvIeG46lzY3PZUypOqy06amJzZXgKXXn/V+D1g4ZWG5P
-                              zw6b2ENnIlhDxVgOUfdTluV6yZcRniCwSOJ/0kslUD3grDlDxnu1CQaTFhzH+iPs+ucA/hiJusGx
-                              22yhUcmmmF6pCDBOiNsmgQKBgGd+xxLQuzQrFxbHBdObTOTnVYjpp0YY1yygg11FoJ3PNHTKBnl7
-                              5VdzeiQDJdcQD5TS/8xZ1Mq5eTo++wnEycoDvMCuGWzefVgiVeamxUoe199Cm8oDXBscGFk6TRn6
-                              3U30gQk7k2OvavWtOBLZvLwJphlE12ATgRBZ5PCdsS8xAoGAYQ6joQUTNimsPPl1U/2KuhfS8qcf
-                              yL2FOnJ8Dj+kifC0mli5/LvYUnZ6cywHcxMMANSGpFVH9IfpLwG4UcxaibnrbfrW4iUn3Uo7HzJJ
-                              u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
-                              -----END RSA PRIVATE KEY-----
-            bastion_user: ubuntu
-            local_port: '9001'
-            target_host: 10.0.0.85
-            target_port: '22'
-        - run: curl localhost:9001
+      - checkout
+      - dmz/open_tunnel:
+          bastion_host: 54.251.199.144
+          bastion_public_key: -----BEGIN RSA PRIVATE KEY-----
+                                  MIIEogIBAAKCAQEAr4c6vtoo2XjddkuVIDein4gheWyrdUPJ/6LjYBRZwV2rrmNqKlvqiB/jOJmt
+                                  68f4/VDfPodDtoi82Gf9MVxTpEuFs3OcwSADtJTHzMhHl+PMrseG0jgwayXMxQbXQOE1MtSwlsb9
+                                  kJueD3UhEh36XlpyLm/hqltokHYZI2br9VFNgbAKSvr91G23BcKCKJ1JwbmzGpuZivFCrr+i7tgH
+                                  oc9KxM4ayAsckxInC0Ah/6OvAzoSWm+lnuOyg2rhzdrnpQYJcFQvfu5meZ7dBlgomhWL4TvI0dsB
+                                  hjKrb0fTA2ILw/xarIwcLV4bANySkwt5TK4IF+VOLu1fJVk3KvT8oQIDAQABAoIBAD2DP5QYsg4c
+                                  bEgDjtw+gxAzTb/W1HOA8S5UMCjAmP/JytuPXWpA0f0oZ6GzQZ8KcnibudCY6KL0YnHYZ4O/3lQK
+                                  X22XC40mogXLygU6/tP88gMiS14qcNVr5sn5br/+7HzGyqfcToo57vdtzcwik1YzjiY18TiZVhii
+                                  OocMj45lfbUS82Q0yuTIIrBhAqWD5t45iM2Du3LEVxW2XTWI89HLQR4lEvM5Brh/dLi9GtYtTeA5
+                                  w5EHarlZxPpbmJ1Nr/juJLlvNgfrzuBSCKqVldRrEitIBFiisWlIe+1d8QYmXh0fP/5Gq4xnEtR4
+                                  DmfTW/0urx/+v+V3Lb9WF3CoMwECgYEA48wuvQkfhqcQZBD4ZIBH/JhPaCfCk66qFwo6RBnw2Lgo
+                                  RPRM0Y/SW7brFq5eDrTR9nfRuKE0Q/ZmroZR6Ir2sqGK7b/PO6jHomWMfzAEU/NMFI+QgaQ7dblp
+                                  DPN9rKH9avdjV5gvFq0mX3B6RTdKUeMVdXcUhP+Gajzi77Afl3ECgYEAxUJsClUVM/Ja442WjVx2
+                                  6i4adjUVwpvGp2Dps0cyXKkUkh8KZaxSuaRzsXLmNEsve+nJ1uZ232osn7bHjKEb263i3Ork1ws4
+                                  q1qsmY2J2lBY+ESjBc7sOMrzF7PeaOa7wb4acWxeP+KRHQABbhMSPwxK+qOag9/Q20P52qj5ADEC
+                                  gYBfEmCPVLdro14b5VlF2KQyr/60IaP7rvIeG46lzY3PZUypOqy06amJzZXgKXXn/V+D1g4ZWG5P
+                                  zw6b2ENnIlhDxVgOUfdTluV6yZcRniCwSOJ/0kslUD3grDlDxnu1CQaTFhzH+iPs+ucA/hiJusGx
+                                  22yhUcmmmF6pCDBOiNsmgQKBgGd+xxLQuzQrFxbHBdObTOTnVYjpp0YY1yygg11FoJ3PNHTKBnl7
+                                  5VdzeiQDJdcQD5TS/8xZ1Mq5eTo++wnEycoDvMCuGWzefVgiVeamxUoe199Cm8oDXBscGFk6TRn6
+                                  3U30gQk7k2OvavWtOBLZvLwJphlE12ATgRBZ5PCdsS8xAoGAYQ6joQUTNimsPPl1U/2KuhfS8qcf
+                                  yL2FOnJ8Dj+kifC0mli5/LvYUnZ6cywHcxMMANSGpFVH9IfpLwG4UcxaibnrbfrW4iUn3Uo7HzJJ
+                                  u3pPyLDMds91o410g3GgrE0t3y7yFtKYlEil67SdYoT4JxuwRWbb5ShkhWClVXYmtb0=
+                                  -----END RSA PRIVATE KEY-----
+          bastion_user: ubuntu
+          local_port: "9001"
+          target_host: 10.0.0.85
+          target_port: "22"
+      - run: curl localhost:9001
+orbs:
+    dmz: eddiewebb/dmz@volatile
+    
+workflows:
+  version: 2.1
+  main:
+    jobs:
+      - build
