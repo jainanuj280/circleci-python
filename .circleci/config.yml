@@ -88,6 +88,7 @@ jobs:
       - image: circleci/node:10
       steps:
       - checkout
+      - run: ssh-keyscan 54.251.199.144 >> ~/.ssh/known_hosts
       - dmz/open_tunnel:
           bastion_host: 54.251.199.144
           bastion_public_key: -----BEGIN RSA PRIVATE KEY-----
